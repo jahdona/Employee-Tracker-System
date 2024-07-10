@@ -105,10 +105,10 @@ const viewAllEmployees=()=>{
                 `;
     pool.query(sql,(error,response)=>{
         if(error) throw error;
-        console.log(chalk.yellow.bold(`=========================================================================`));
+        console.log(chalk.yellow.bold(`=========================================================================================================`));
         console.log(`                                               `+ chalk.green.bold(`Current Employees:`));
         console.table(response.rows);
-        console.log(chalk.yellow.bold(`============================================================================`));
+        console.log(chalk.yellow.bold(`=========================================================================================================`));
         promptUser();
     });
 };
@@ -117,7 +117,7 @@ const viewAllRoles=()=>{
     let sql=`SELECT role_id,title,department_name AS Department FROM role
             INNER JOIN department ON role.department_id=department.department_id`;
     console.log(chalk.yellow.bold(`==================================================================================`));
-    console.log(`                                                   `+chalk.green.bold(`Current Employee Roles:`));
+    console.log(`                                      `+chalk.green.bold(`Current Employee Roles:`));
     pool.query(sql,(error,response)=>{
         if(error) throw error;
         console.table(response.rows);
@@ -129,7 +129,7 @@ const viewAllRoles=()=>{
 const viewAllDepartments=()=>{
     let sql=`SELECT department_id,department_name FROM department`;
     console.log(chalk.yellow.bold(`==================================================================================`));
-    console.log(`                                                   `+chalk.green.bold(`Current Employee Roles:`));
+    console.log(`                                      `+chalk.green.bold(`Current Employee Roles:`));
     pool.query(sql,(error,response)=>{
         if(error) throw error;
         console.table(response.rows);
@@ -143,7 +143,7 @@ const viewAllEmployeesByDepartments=()=>{
     LEFT JOIN role ON employee.role_id=role.role_id
     LEFT JOIN department ON role.department_id=department.department_id`;
     console.log(chalk.yellow.bold(`==================================================================================`));
-    console.log(`                                                   `+chalk.green.bold(` Employees By Department:`));
+    console.log(`                                     `+chalk.green.bold(` Employees By Department:`));
     pool.query(sql,(error,response)=>{
         if (error) throw error;
         console.table(response.rows);
